@@ -89,7 +89,6 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 
 /* Sections */
 .section { padding-block: var(--section); }
-.section-rule { border-top: 1px solid var(--line); }
 .section-tint { background: var(--paper-2); }
 .section-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px); }
 .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
@@ -129,11 +128,35 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 
 /* What we automate */
 .split-note { font-size: 0.9375rem; }
-.areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin: 0; padding: 0; list-style: none; }
-.areas li { padding: 22px 0 28px; border-top: 1px solid var(--line-strong); }
-.areas h3 { margin-bottom: 6px; }
-.areas p { font-size: 0.975rem; color: var(--ink-2); }
-@media (max-width: 599px) { .areas { grid-template-columns: minmax(0, 1fr); } }
+.hairline-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin: 0; padding: 0; list-style: none; }
+.hairline-grid li { padding: 22px 0 28px; border-top: 1px solid var(--line-strong); }
+.hairline-grid h3 { margin-bottom: 6px; }
+.hairline-grid p { font-size: 0.975rem; color: var(--ink-2); }
+.hairline-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1099px) { .hairline-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599px) { .hairline-grid, .hairline-grid--4 { grid-template-columns: minmax(0, 1fr); } }
+
+/* Hiring vs AI comparison: a table on wide screens, stacked cards on phones */
+.compare { width: 100%; margin-top: clamp(48px, 6vw, 80px); border-collapse: collapse; table-layout: fixed; }
+.compare .col-label { width: 20%; }
+.compare caption { margin-bottom: 20px; font-family: var(--serif); font-size: clamp(1.6rem, 1vw + 1.25rem, 2.1rem); font-weight: 500; line-height: 1.15; text-align: left; }
+.compare th, .compare td { padding: 16px 20px; border-top: 1px solid var(--line-strong); text-align: left; vertical-align: top; }
+.compare thead th, .compare thead td { padding-block: 12px; border-top: 0; font-size: 0.875rem; font-weight: 600; color: var(--muted); }
+.compare tbody th { padding-left: 0; font-weight: 600; }
+.compare td { color: var(--ink-2); }
+.compare .us { background: rgba(31, 90, 67, 0.08); color: var(--ink); }
+.compare thead .us { color: var(--accent); }
+@media (max-width: 699px) {
+  .compare thead, .compare colgroup { display: none; }
+  .compare caption { display: block; }
+  .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
+  .compare tr { padding: 18px 0; border-top: 1px solid var(--line-strong); }
+  .compare th, .compare td { padding: 0; border: 0; }
+  .compare td { margin-top: 10px; }
+  .compare td::before { content: attr(data-label); display: block; margin-bottom: 2px; font-size: 0.8125rem; font-weight: 600; color: var(--muted); }
+  .compare td.us { padding: 10px 12px; border-radius: 8px; }
+  .compare td.us::before { color: var(--accent); }
+}
 
 /* Case study feature (home) */
 .case-feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(40px, 5vw, 80px); align-items: center; }
@@ -227,30 +250,76 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .crumb a { color: var(--ink-2); }
 .cs-hero h1 { max-width: 18ch; font-size: clamp(2.4rem, 3vw + 1.2rem, 4rem); }
 .cs-hero .lede { max-width: 46rem; margin-top: 24px; }
-.cs-body { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: clamp(40px, 6vw, 96px); align-items: start; padding-block: clamp(48px, 6vw, 88px) var(--section); }
-.cs-aside { grid-column: 2; grid-row: 1; position: sticky; top: calc(var(--header-h) + 24px); padding: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
-.facts { display: grid; gap: 14px; margin: 0; }
+.glance { padding-top: clamp(40px, 5vw, 64px); }
+.glance-title { margin-bottom: 16px; font-family: var(--sans); letter-spacing: 0; line-height: 1.4; }
+.stat-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.stat-tile { padding: 24px 26px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.check-list { display: grid; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.check-list li { position: relative; padding-left: 28px; color: var(--ink-2); }
+.check-list li::before { content: ""; position: absolute; left: 3px; top: 0.4em; width: 12px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 28px; margin: 28px 0 0; }
 .facts dt { font-size: 0.8125rem; color: var(--muted); }
 .facts dd { margin: 2px 0 0; font-weight: 600; }
 .facts dd a { display: inline-block; padding-block: 2px; font-weight: 400; color: var(--accent); }
-.aside-title { margin: 24px 0 12px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 0.875rem; font-weight: 600; color: var(--accent); }
-.results-list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
-.results-list strong { display: block; font-family: var(--serif); font-size: 2rem; font-weight: 500; line-height: 1.1; }
-.results-list span { font-size: 0.9375rem; color: var(--ink-2); }
-.prose { grid-column: 1; grid-row: 1; max-width: 68ch; }
-.prose h2 { margin: 56px 0 16px; font-size: clamp(1.75rem, 1vw + 1.35rem, 2.25rem); }
-.prose > h2:first-child { margin-top: 0; }
+.prose { max-width: 68ch; padding-block: clamp(48px, 6vw, 88px); }
+.prose h2 { margin-bottom: 16px; font-size: clamp(1.75rem, 1vw + 1.35rem, 2.25rem); }
 .prose p { margin-top: 16px; color: var(--ink-2); }
-.parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
-.part { padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); }
-.part h3 { font-size: 1.0625rem; }
-.prose .part p { margin-top: 6px; font-size: 0.9375rem; }
+.prose .quote { margin-top: 40px; }
 @media (max-width: 959px) {
-  .cs-body { grid-template-columns: minmax(0, 1fr); }
-  .cs-aside, .prose { grid-column: auto; grid-row: auto; }
-  .cs-aside { position: static; }
+  .stat-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-tile:last-child { grid-column: 1 / -1; }
 }
-@media (max-width: 559px) { .parts { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 599px) {
+  .stat-tiles, .facts { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* What we built: a sticky diagram that fills in as the steps scroll past (states set by assets/js/site.js).
+   Without the script the whole diagram simply shows. */
+.scrolly { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.scrolly-graphic { grid-column: 2; grid-row: 1; position: sticky; top: calc(var(--header-h) + 32px); }
+.scrolly-steps { grid-column: 1; grid-row: 1; margin: 0; padding: 0; list-style: none; }
+.scrolly-step { display: flex; flex-direction: column; justify-content: center; min-height: 60vh; }
+.scrolly-step:last-child { min-height: 70vh; }
+.step-kicker { font-size: 0.875rem; font-weight: 600; color: var(--accent); }
+.scrolly-step h3 { margin: 6px 0 10px; font-family: var(--serif); font-size: clamp(1.5rem, 0.8vw + 1.2rem, 1.9rem); font-weight: 500; line-height: 1.15; }
+.scrolly-step p:last-child { max-width: 40ch; color: var(--ink-2); }
+.flow-svg { display: block; width: 100%; height: auto; max-height: calc(100vh - var(--header-h) - 64px); overflow: visible; }
+.flow-svg text { font-family: var(--sans); dominant-baseline: central; text-anchor: middle; }
+.rails path { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 3 6; }
+.link { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+.node rect { fill: var(--card); stroke: var(--accent); stroke-width: 1.5; transition: fill 0.4s, stroke 0.4s, stroke-width 0.4s; }
+.node text { font-size: 15px; font-weight: 600; fill: var(--ink); }
+.node .sub { font-size: 11.5px; font-weight: 500; fill: var(--muted); }
+.hub rect { fill: var(--accent); stroke: var(--accent); }
+.hub text { font-size: 17px; fill: #fff; }
+.hub .sub { font-size: 12px; fill: rgba(255, 255, 255, 0.8); }
+.tag rect { fill: var(--accent); }
+.tag text { font-size: 11.5px; font-weight: 600; fill: #fff; }
+.pulse { fill: var(--accent); opacity: 0; }
+.is-scrolly .node { opacity: 0.3; transition: opacity 0.4s; }
+.is-scrolly .node rect { stroke: var(--line-strong); }
+.is-scrolly .node.on { opacity: 1; }
+.is-scrolly .node.on rect { stroke: var(--accent); }
+.is-scrolly .node.now:not(.hub) rect { fill: #e3eee8; stroke-width: 2.5; }
+.is-scrolly .hub.on rect { stroke: var(--accent); }
+.is-scrolly .hub.now rect { filter: drop-shadow(0 0 12px rgba(31, 90, 67, 0.45)); }
+.is-scrolly .link { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 0.9s ease; }
+.is-scrolly .link.on { stroke-dashoffset: 0; }
+.is-scrolly .tag { opacity: 0; transition: opacity 0.4s 0.5s; }
+.is-scrolly .tag.on { opacity: 1; }
+.is-scrolly .pulse.now { opacity: 1; }
+.is-scrolly .scrolly-step { opacity: 0.35; transition: opacity 0.3s; }
+.is-scrolly .scrolly-step.now { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .is-scrolly .link, .is-scrolly .tag, .is-scrolly .node, .node rect { transition: none; }
+  .pulse { display: none; }
+}
+@media (max-width: 959px) {
+  .scrolly { display: block; }
+  .scrolly-graphic { position: sticky; top: var(--header-h); z-index: 2; margin: 0 calc(-1 * var(--gutter)); padding: 12px var(--gutter); background: var(--paper-2); border-bottom: 1px solid var(--line); }
+  .flow-svg { max-height: 40vh; margin-inline: auto; }
+  .scrolly-step { justify-content: flex-start; min-height: 48vh; padding-top: 16px; }
+}
 
 /* Photo carousel: CSS scroll-snap track; arrow and dot controls come from assets/js/site.js */
 .carousel-frame { position: relative; }
