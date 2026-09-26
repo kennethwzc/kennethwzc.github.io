@@ -1,0 +1,4 @@
+# Local-only files; the Pages repo is public on GitHub Free
+CLAUDE.md
+.claude/
+.DS_Store
