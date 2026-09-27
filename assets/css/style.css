@@ -275,7 +275,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .check-list { display: grid; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
 .check-list li { position: relative; padding-left: 28px; color: var(--ink-2); }
 .check-list li::before { content: ""; position: absolute; left: 3px; top: 0.4em; width: 12px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
-.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 28px; margin: 28px 0 0; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 28px; margin: 28px 0 0; }
 .facts dt { font-size: 0.8125rem; color: var(--muted); }
 .facts dd { margin: 2px 0 0; font-weight: 600; }
 .facts dd a { display: inline-block; padding-block: 2px; font-weight: 400; color: var(--accent); }
@@ -286,6 +286,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 @media (max-width: 959px) {
   .stat-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat-tile:last-child { grid-column: 1 / -1; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 599px) {
   .stat-tiles, .facts { grid-template-columns: minmax(0, 1fr); }
@@ -306,21 +307,16 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .rails path { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 3 6; }
 .link { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
 .node rect { fill: var(--card); stroke: var(--accent); stroke-width: 1.5; transition: fill 0.4s, stroke 0.4s, stroke-width 0.4s; }
-.node text { font-size: 15px; font-weight: 600; fill: var(--ink); }
-.node .sub { font-size: 11.5px; font-weight: 500; fill: var(--muted); }
-.hub rect { fill: var(--accent); stroke: var(--accent); }
-.hub text { font-size: 17px; fill: #fff; }
-.hub .sub { font-size: 12px; fill: rgba(255, 255, 255, 0.8); }
+.node text { font-size: 17px; font-weight: 600; fill: var(--ink); }
+.node .sub { font-size: 12.5px; fill: var(--accent); }
 .tag rect { fill: var(--accent); }
-.tag text { font-size: 11.5px; font-weight: 600; fill: #fff; }
+.tag text { font-size: 13px; font-weight: 600; fill: #fff; }
 .pulse { fill: var(--accent); opacity: 0; }
 .is-scrolly .node { opacity: 0.3; transition: opacity 0.4s; }
 .is-scrolly .node rect { stroke: var(--line-strong); }
 .is-scrolly .node.on { opacity: 1; }
 .is-scrolly .node.on rect { stroke: var(--accent); }
-.is-scrolly .node.now:not(.hub) rect { fill: #e3eee8; stroke-width: 2.5; }
-.is-scrolly .hub.on rect { stroke: var(--accent); }
-.is-scrolly .hub.now rect { filter: drop-shadow(0 0 12px rgba(31, 90, 67, 0.45)); }
+.is-scrolly .node.now rect { fill: #e3eee8; stroke-width: 2.5; }
 .is-scrolly .link { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 0.9s ease; }
 .is-scrolly .link.on { stroke-dashoffset: 0; }
 .is-scrolly .tag { opacity: 0; transition: opacity 0.4s 0.5s; }
