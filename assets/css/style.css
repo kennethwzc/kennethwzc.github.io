@@ -304,6 +304,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .scrolly-steps { grid-column: 1; grid-row: 1; margin: 0; padding: 0; list-style: none; }
 .scrolly-step { display: flex; flex-direction: column; justify-content: center; min-height: 60vh; }
 .scrolly-step:last-child { min-height: 70vh; }
+.product-scrolly .scrolly-step:last-child { min-height: 100vh; }
 .step-kicker { font-size: 0.875rem; font-weight: 600; color: var(--accent); }
 .scrolly-step h3 { margin: 6px 0 10px; font-family: var(--serif); font-size: clamp(1.5rem, 0.8vw + 1.2rem, 1.9rem); font-weight: 500; line-height: 1.15; }
 .scrolly-step p:last-child { max-width: 40ch; color: var(--ink-2); }
@@ -329,15 +330,22 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .is-scrolly .pulse.now { opacity: 1; }
 .is-scrolly .scrolly-step { opacity: 0.35; transition: opacity 0.3s; }
 .is-scrolly .scrolly-step.now { opacity: 1; }
+.is-scrolly.product-scrolly .scrolly-step { padding-inline-start: 22px; border-inline-start: 2px solid var(--line-strong); opacity: 1; transition: border-color 0.3s; }
+.is-scrolly.product-scrolly .scrolly-step.now { border-inline-start-color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
-  .is-scrolly .link, .is-scrolly .tag, .is-scrolly .node, .node rect { transition: none; }
+  .is-scrolly .link, .is-scrolly .tag, .is-scrolly .node, .is-scrolly .scrolly-step, .node rect { transition: none; }
   .pulse { display: none; }
 }
 @media (max-width: 959px) {
   .scrolly { display: block; }
   .scrolly-graphic { position: sticky; top: var(--header-h); z-index: 2; margin: 0 calc(-1 * var(--gutter)); padding: 12px var(--gutter); background: var(--paper-2); border-bottom: 1px solid var(--line); }
   .flow-svg { max-height: 40vh; margin-inline: auto; }
+  .product-scrolly .flow-svg { max-height: min(38vh, 320px); }
   .scrolly-step { justify-content: flex-start; min-height: 48vh; padding-top: 16px; }
+  .is-scrolly.product-scrolly .scrolly-step { min-height: 100vh; padding: 0; border-inline-start: 0; }
+  .product-scrolly .scrolly-copy { position: sticky; top: calc(var(--header-h) + min(38vh, 320px) + 48px); padding: 0 0 40px 22px; border-inline-start: 2px solid var(--line-strong); }
+  .is-scrolly.product-scrolly .scrolly-step.now .scrolly-copy { border-inline-start-color: var(--accent); }
+  .product-scrolly .scrolly-step:last-child { min-height: 115vh; }
 }
 
 /* Photo carousel: CSS scroll-snap track; arrow and dot controls come from assets/js/site.js */

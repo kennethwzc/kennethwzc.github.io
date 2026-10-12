@@ -31,8 +31,7 @@ document.querySelectorAll('.carousel').forEach((carousel) => {
 });
 
 // Case study diagram: the number of steps above the trigger line decides how much of the diagram is lit.
-const scrolly = document.querySelector('.scrolly');
-if (scrolly) {
+document.querySelectorAll('.scrolly').forEach((scrolly) => {
   const steps = [...scrolly.querySelectorAll('.scrolly-step')];
   const parts = [...scrolly.querySelectorAll('svg [data-step]')];
   scrolly.querySelectorAll('.tag').forEach((tag) => {  // size each label pill to its text
@@ -50,7 +49,12 @@ if (scrolly) {
     const active = steps.filter((step) => step.getBoundingClientRect().top < line).length;
     if (active === shown) return;
     shown = active;
-    steps.forEach((step, i) => step.classList.toggle('now', i + 1 === active));
+    steps.forEach((step, i) => {
+      const current = i + 1 === active;
+      step.classList.toggle('now', current);
+      if (current) step.setAttribute('aria-current', 'step');
+      else step.removeAttribute('aria-current');
+    });
     parts.forEach((el) => {
       const current = (el.dataset.now || el.dataset.step).split(' ').map(Number);
       el.classList.toggle('on', Number(el.dataset.step) <= active);
@@ -65,4 +69,4 @@ if (scrolly) {
   }, { passive: true });
   addEventListener('resize', update);
   update();
-}
+});
