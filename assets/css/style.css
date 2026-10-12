@@ -92,6 +92,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .section { padding-block: var(--section); }
 .section-tint { background: var(--paper-2); }
 .section-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px); }
+.section-head > p:not(.label) { max-width: 68ch; margin-top: 20px; color: var(--ink-2); }
 .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
 .split-head { position: sticky; top: calc(var(--header-h) + 32px); }
 .split-head > p:not(.label) { max-width: 62ch; margin-top: 20px; color: var(--ink-2); }
@@ -165,6 +166,8 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .case-card { position: relative; display: grid; grid-template-rows: auto 1fr; gap: 28px; }
 .case-media { margin: 0; overflow: hidden; aspect-ratio: 3 / 2; border-radius: var(--radius); background: var(--paper-2); }
 .case-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.product-media { border: 1px solid var(--line); background: #e9eef4; }
+.product-media img { object-position: left top; }
 .case-meta { margin-bottom: 12px; font-size: 0.875rem; font-weight: 600; color: var(--accent); }
 .case-title { font-family: var(--serif); font-size: clamp(1.6rem, 0.8vw + 1.3rem, 2rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; }
 .case-title a { text-decoration: none; }
@@ -267,6 +270,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .crumb a { color: var(--ink-2); }
 .page-hero h1 { max-width: 18ch; font-size: clamp(2.4rem, 3vw + 1.2rem, 4rem); }
 .page-hero .lede { max-width: 46rem; margin-top: 24px; }
+.case-hero-actions { margin-top: 32px; }
 
 /* Case study page */
 .glance { padding-top: clamp(40px, 5vw, 64px); }
@@ -343,6 +347,10 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 .slide { flex: 0 0 100%; margin: 0; aspect-ratio: 16 / 9; max-height: 72vh; scroll-snap-align: start; background: var(--paper-2); }
 .slide img { width: 100%; height: 100%; object-fit: cover; }
 .slide .crop-low { object-position: 50% 66%; }
+.product-carousel .carousel-track { border: 1px solid var(--line); background: #e9eef4; }
+.product-carousel .slide { background: #e9eef4; }
+.product-carousel .slide img { object-position: left top; }
+.platform-table { margin-top: 0; }
 .carousel-btn { position: absolute; top: 50%; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.92); color: var(--ink); font-size: 1.1rem; cursor: pointer; box-shadow: 0 2px 12px rgba(21, 24, 29, 0.3); transform: translateY(-50%); }
 .carousel-btn:hover { background: #fff; }
 .carousel-btn.prev { left: 16px; }
@@ -353,6 +361,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.35; }
 @media (max-width: 699px) {
   .slide { aspect-ratio: 4 / 3; }
   .slide .crop-low { object-position: 50% 85%; }
+  .product-carousel .slide img { object-fit: contain; }
   .carousel-btn { width: 40px; height: 40px; }
   .carousel-btn.prev { left: 10px; }
   .carousel-btn.next { right: 10px; }
